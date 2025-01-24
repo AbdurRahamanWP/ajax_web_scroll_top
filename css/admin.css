@@ -1,0 +1,22 @@
+.newProject h2{
+    font-size: 26px;
+    border-bottom: 2px solid #FFFFFF;
+    text-align: left;
+    padding: 15px;
+    color: #FFFFFF !important;
+    background-color: #0d6efd;
+}
+.newProject{
+    max-width: 850px;
+    margin-top: 50px !important;
+}
+
+.scroll_top_form{
+    margin-top: 20px;
+}
+
+.btn-primary{
+    margin-top: 20px;
+    height: 55px;
+    width: 250px;
+}
