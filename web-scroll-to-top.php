@@ -28,35 +28,54 @@ if ( ! defined( 'ABSPATH' ) ) {
  add_action('admin_enqueue_scripts','Web_Scroll_Top_form_enqueue_admin_styles');
 
 
+ add_action('wp_ajax_scroll_top_form','updated_scroll_to_top_data');
+
+
  function Web_Scroll_Top_form_enqueue_styles(){
 
 
   $settings = json_decode(get_option('scroll_to_top'),true);
   @$scroll_top_type = $settings['scroll_top_type'];
 
-  if($scroll_top_type =='tab'){
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/tab_style.php';
-  }
-  if($scroll_top_type =='images'){
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/images_style.php';
-  }
-  if($scroll_top_type =='link'){
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/link_style.php';
-  }
-  if($scroll_top_type =='pill'){
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/pill_style.php';
-  }
-  
+      if($scroll_top_type =='tab'){
+        require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/tab_style.php';
+      }
+      if($scroll_top_type =='images'){
+        require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/images_style.php';
+      }
+      if($scroll_top_type =='link'){
+        require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/link_style.php';
+      }
+      if($scroll_top_type =='pill'){
+        require_once plugin_dir_path( __FILE__ ) . 'includes/Admin/pill_style.php';
+      }
   
 }
+
+
+function updated_scroll_to_top_data(){
+
+  wp_send_json_success($_POST);
+
+}
+
+
 
 function Web_Scroll_Top_form_enqueue_admin_styles(){
   wp_enqueue_style( 'bootstrap', plugins_url('css/bootstrap.css',__FILE__));
   wp_enqueue_style( 'bootstrap-min', plugins_url('css/bootstrap.min.css',__FILE__));
   wp_enqueue_style( 'admins', plugins_url('css/admin.css',__FILE__));
-  wp_enqueue_script( 'custom_js', plugins_url('js/custom.js',__FILE__));
+  wp_enqueue_script( 'web_scroll_top_custom_js', plugins_url('js/custom.js',__FILE__));
+  
+  wp_localize_script('web_scroll_top_custom_js', 'ajaxScrollTop',[
+      'ajax_url' => admin_url('admin-ajax.php'),
+      'nonce'    => wp_create_nonce('simple_ajax_scroll_top'),
+  ]);
+  
   wp_enqueue_media();
 }
+
+
 
 add_action('wp_enqueue_scripts','Web_Scroll_Top_form_enqueue_script');
 function Web_Scroll_Top_form_enqueue_script(){

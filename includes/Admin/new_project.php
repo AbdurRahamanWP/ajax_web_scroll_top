@@ -119,7 +119,8 @@
                     </div>
                     <div class="col-sm-8">
                     <?php wp_nonce_field('update-options'); ?>
-                    <button type="submit" name="submit" id='submit' class="btn btn-primary">Save Information</button>
+                    <!-- <button type="submit" name="submit" id='submit' class="btn btn-primary">Save Information</button> -->
+                    <button type="submit" name="submit_data" id='submit_data' class="btn btn-primary">Save Information</button>
                     </div>
                 </div>
             </form>

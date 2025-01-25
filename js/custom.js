@@ -18,4 +18,20 @@ jQuery(document).ready(function () {
     });
 });
 
+
+jQuery('#scroll_top_form').on('submit', function (e) {
+  e.preventDefault();
+  // alert('form submit');
+
+  $.post(
+    ajaxScrollTop.ajax_url,
+    $(this).serialize(),
+    function(response){}
+    
+  );
+
+});
+
+
+
 });
