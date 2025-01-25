@@ -74,26 +74,20 @@ function Web_Scroll_Top_form_enqueue_styles()
   $settings = json_decode(get_option('scroll_to_top'), true);
   @$scroll_top_type = $settings['scroll_top_type'];
 
-  if ($scroll_top_type == 'tab') {
-    require_once plugin_dir_path(__FILE__) . 'includes/Admin/tab_style.php';
-  }
-  if ($scroll_top_type == 'images') {
-    require_once plugin_dir_path(__FILE__) . 'includes/Admin/images_style.php';
-  }
-  if ($scroll_top_type == 'link') {
-    require_once plugin_dir_path(__FILE__) . 'includes/Admin/link_style.php';
-  }
-  if ($scroll_top_type == 'pill') {
-    require_once plugin_dir_path(__FILE__) . 'includes/Admin/pill_style.php';
-  }
+    if ($scroll_top_type == 'tab') {
+      require_once plugin_dir_path(__FILE__) . 'includes/Admin/tab_style.php';
+    }
+    if ($scroll_top_type == 'images') {
+      require_once plugin_dir_path(__FILE__) . 'includes/Admin/images_style.php';
+    }
+    if ($scroll_top_type == 'link') {
+      require_once plugin_dir_path(__FILE__) . 'includes/Admin/link_style.php';
+    }
+    if ($scroll_top_type == 'pill') {
+      require_once plugin_dir_path(__FILE__) . 'includes/Admin/pill_style.php';
+    }
 }
 
-
-function updated_scroll_to_top_data()
-{
-
-  wp_send_json_success($_POST);
-}
 
 
 
